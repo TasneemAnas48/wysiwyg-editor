@@ -2,6 +2,9 @@
 
 A flexible and customizable WYSIWYG (What You See Is What You Get) editor component built with React, TypeScript, and Draft.js.
 
+🔗 [Live Demo](https://tasneemanas48.github.io/wysiwyg-editor/)
+
+
 ## Author
 
 [Tasneem Anas](https://www.linkedin.com/in/tasneem-anas/)
