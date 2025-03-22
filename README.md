@@ -2,6 +2,10 @@
 
 A flexible and customizable WYSIWYG (What You See Is What You Get) editor component built with React, TypeScript, and Draft.js.
 
+## Author
+
+[Tasneem Anas](https://www.linkedin.com/in/tasneem-anas/)
+
 ## Features
 
 - 🎨 Multiple editor variants:
@@ -17,7 +21,7 @@ A flexible and customizable WYSIWYG (What You See Is What You Get) editor compon
 ## Installation
 
 ```bash
-npm install 
+npm install
 ```
 
 ## Usage
@@ -25,7 +29,7 @@ npm install
 ### Basic Usage (Uncontrolled)
 
 ```tsx
-import { WYSIWYGEditor } from './components/WYSIWYGEditor';
+import { WYSIWYGEditor } from "./components/WYSIWYGEditor";
 
 const MyComponent = () => {
   return <WYSIWYGEditor />;
@@ -35,8 +39,8 @@ const MyComponent = () => {
 ### Controlled Editor
 
 ```tsx
-import { WYSIWYGEditor } from './components/WYSIWYGEditor';
-import { RawDraftContentState } from 'draft-js';
+import { WYSIWYGEditor } from "./components/WYSIWYGEditor";
+import { RawDraftContentState } from "draft-js";
 
 const MyComponent = () => {
   const [content, setContent] = useState<RawDraftContentState | null>(null);
@@ -52,8 +56,8 @@ const MyComponent = () => {
 ### Custom Toolbar
 
 ```tsx
-import { WYSIWYGEditor } from './components/WYSIWYGEditor';
-import { ToolbarProps } from './components/WYSIWYGEditor/toolbarUtils';
+import { WYSIWYGEditor } from "./components/WYSIWYGEditor";
+import { ToolbarProps } from "./components/WYSIWYGEditor/toolbarUtils";
 
 const MyComponent = () => {
   const renderCustomToolbar = ({ currentStyles, onToggle }: ToolbarProps) => (
@@ -68,14 +72,14 @@ const MyComponent = () => {
 
 ## Props
 
-| Prop | Type | Description |
-|------|------|-------------|
-| value | RawDraftContentState | Controlled content value |
-| initialContent | RawDraftContentState | Initial content for uncontrolled mode |
-| onChange | (content: RawDraftContentState) => void | Change handler for controlled mode |
-| className | string | Additional CSS class name |
-| style | React.CSSProperties | Inline styles |
-| renderToolbar | (props: ToolbarProps) => JSX.Element | Custom toolbar renderer |
+| Prop           | Type                                    | Description                           |
+| -------------- | --------------------------------------- | ------------------------------------- |
+| value          | RawDraftContentState                    | Controlled content value              |
+| initialContent | RawDraftContentState                    | Initial content for uncontrolled mode |
+| onChange       | (content: RawDraftContentState) => void | Change handler for controlled mode    |
+| className      | string                                  | Additional CSS class name             |
+| style          | React.CSSProperties                     | Inline styles                         |
+| renderToolbar  | (props: ToolbarProps) => JSX.Element    | Custom toolbar renderer               |
 
 ## Development
 
