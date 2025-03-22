@@ -1,54 +1,104 @@
-# React + TypeScript + Vite
+# React WYSIWYG Editor Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A flexible and customizable WYSIWYG (What You See Is What You Get) editor component built with React, TypeScript, and Draft.js.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🎨 Multiple editor variants:
+  - Controlled Editor with state management
+  - Uncontrolled Editor for simple use cases
+  - Custom Toolbar Editor for UI customization
+- ⌨️ Keyboard shortcuts support (Cmd/Ctrl + B, I, U)
+- 🎯 Basic text formatting (Bold, Italic, Underline)
+- 🔄 Controlled and uncontrolled component modes
+- 💅 Customizable styling
+- ♿ Accessibility features
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install # or yarn
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Basic Usage (Uncontrolled)
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```tsx
+import { WYSIWYGEditor } from './components/WYSIWYGEditor';
+
+const MyComponent = () => {
+  return <WYSIWYGEditor />;
+};
 ```
+
+### Controlled Editor
+
+```tsx
+import { WYSIWYGEditor } from './components/WYSIWYGEditor';
+import { RawDraftContentState } from 'draft-js';
+
+const MyComponent = () => {
+  const [content, setContent] = useState<RawDraftContentState | null>(null);
+
+  const handleChange = (newContent: RawDraftContentState) => {
+    setContent(newContent);
+  };
+
+  return <WYSIWYGEditor value={content} onChange={handleChange} />;
+};
+```
+
+### Custom Toolbar
+
+```tsx
+import { WYSIWYGEditor } from './components/WYSIWYGEditor';
+import { ToolbarProps } from './components/WYSIWYGEditor/toolbarUtils';
+
+const MyComponent = () => {
+  const renderCustomToolbar = ({ currentStyles, onToggle }: ToolbarProps) => (
+    <div className="custom-toolbar">
+      {/* Your custom toolbar implementation */}
+    </div>
+  );
+
+  return <WYSIWYGEditor renderToolbar={renderCustomToolbar} />;
+};
+```
+
+## Props
+
+| Prop | Type | Description |
+|------|------|-------------|
+| value | RawDraftContentState | Controlled content value |
+| initialContent | RawDraftContentState | Initial content for uncontrolled mode |
+| onChange | (content: RawDraftContentState) => void | Change handler for controlled mode |
+| className | string | Additional CSS class name |
+| style | React.CSSProperties | Inline styles |
+| renderToolbar | (props: ToolbarProps) => JSX.Element | Custom toolbar renderer |
+
+## Development
+
+This project uses Vite as the build tool and development server.
+
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## Dependencies
+
+- React
+- TypeScript
+- Draft.js
+- Vite
+
+## License
+
+MIT
