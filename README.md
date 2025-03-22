@@ -17,7 +17,7 @@ A flexible and customizable WYSIWYG (What You See Is What You Get) editor compon
 ## Installation
 
 ```bash
-npm install # or yarn
+npm install 
 ```
 
 ## Usage
@@ -90,6 +90,9 @@ npm run build
 
 # Preview production build
 npm run preview
+
+# Run tests
+npm run test
 ```
 
 ## Dependencies
